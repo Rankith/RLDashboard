@@ -9,6 +9,8 @@ from django.conf.urls import include, url
 # admin.autodiscover()
 
 urlpatterns = [
+    url(r'^$', RLDashboard.views.index, name='index'),
+    url(r'^home$', RLDashboard.views.index, name='home'),
     # Examples:
     # url(r'^$', RLDashboard.views.home, name='home'),
     # url(r'^RLDashboard/', include('RLDashboard.RLDashboard.urls')),

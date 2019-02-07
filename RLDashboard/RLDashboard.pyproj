@@ -30,6 +30,13 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Main\admin.py" />
+    <Compile Include="Main\apps.py" />
+    <Compile Include="Main\migrations\__init__.py" />
+    <Compile Include="Main\models.py" />
+    <Compile Include="Main\tests.py" />
+    <Compile Include="Main\views.py" />
+    <Compile Include="Main\__init__.py" />
     <Compile Include="manage.py" />
     <Compile Include="RLDashboard\__init__.py" />
     <Compile Include="RLDashboard\settings.py" />
@@ -37,9 +44,14 @@
     <Compile Include="RLDashboard\wsgi.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Main\templates\Main\index.html" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Main\" />
+    <Folder Include="Main\migrations\" />
+    <Folder Include="Main\templates\" />
+    <Folder Include="Main\templates\Main\" />
     <Folder Include="RLDashboard\" />
   </ItemGroup>
   <ItemGroup>
