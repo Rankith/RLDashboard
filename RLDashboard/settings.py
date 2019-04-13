@@ -127,5 +127,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'main/static')
 #STATIC_ROOT = posixpath.join(*(BASE_DIR.split(os.path.sep) + ['static']))
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'main/static'),
+    os.path.join(BASE_DIR, 'static'),
 )
