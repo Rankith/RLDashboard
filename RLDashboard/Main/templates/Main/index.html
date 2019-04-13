@@ -1,9 +1,72 @@
-<html>
-<head><title></title></head>
+{% extends "Main/layout.html" %}
 
-<body>
+{% block content %}
+<br/>
+<form action="/home" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Start">
+</form>
+     <div id="divReplays"></div>
+{% endblock %}
 
-{{ content }}
+{% block scripts %}
 
-</body>
-</html>
+    {% load staticfiles %}
+<script type="text/javascript">
+    var link = "{{link}}";
+    var playerName = "{{playerName}}";
+    var interval = "";
+    $( document ).ready(function() {
+        if (playerName != "-1")
+        {
+            CheckReplay();
+            interval = setInterval(CheckReplay,5000);
+        }
+    });
+
+    function CheckReplay()
+    {
+    $.ajax({
+        url: 'checkreplay',
+        type: 'GET',
+        data: { playerName: playerName} ,
+        contentType: 'application/json; charset=utf-8',
+        success: function (response) {
+            console.log("Current Replay: " + link);
+            console.log("Latest  Replay: " + response);
+            if (response != link)
+            {
+                link = response;
+                AddReplay();
+            }
+                
+        },
+        error: function () {
+            console.log("error checking replay");
+        }
+    });
+
+    }
+
+    function AddReplay()
+    {
+         $.ajax({
+        url: 'getreplay',
+        type: 'GET',
+        data: { replay: link,playerName: playerName} ,
+        contentType: 'application/json; charset=utf-8',
+        success: function (response) {
+            console.log("Got Replay: " + link);
+            $("#divReplays").prepend(response);
+                
+        },
+        error: function () {
+           console.log("error getting replay");
+        }
+    });
+    }
+   
+</script>
+
+{% endblock %}

@@ -32,6 +32,9 @@
   <ItemGroup>
     <Compile Include="Main\admin.py" />
     <Compile Include="Main\apps.py" />
+    <Compile Include="Main\forms.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Main\migrations\__init__.py" />
     <Compile Include="Main\models.py" />
     <Compile Include="Main\tests.py" />
@@ -44,12 +47,42 @@
     <Compile Include="RLDashboard\wsgi.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Main\static\app\content\bootstrap.css" />
+    <Content Include="Main\static\app\content\bootstrap.min.css" />
+    <Content Include="Main\static\app\content\site.css" />
+    <Content Include="Main\static\app\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Main\static\app\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Main\static\app\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Main\static\app\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Main\static\app\scripts\_references.js" />
+    <Content Include="Main\static\app\scripts\bootstrap.js" />
+    <Content Include="Main\static\app\scripts\bootstrap.min.js" />
+    <None Include="Main\static\app\scripts\jquery.validate-vsdoc.js" />
+    <None Include="Main\static\app\scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Main\static\app\scripts\jquery-1.10.2.js" />
+    <Content Include="Main\static\app\scripts\jquery-1.10.2.min.js" />
+    <Content Include="Main\static\app\scripts\jquery-1.10.2.min.map" />
+    <Content Include="Main\static\app\scripts\jquery.validate.js" />
+    <Content Include="Main\static\app\scripts\jquery.validate.min.js" />
+    <Content Include="Main\static\app\scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Main\static\app\scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Main\static\app\scripts\modernizr-2.6.2.js" />
+    <Content Include="Main\static\app\scripts\respond.js" />
+    <Content Include="Main\static\app\scripts\respond.min.js" />
     <Content Include="Main\templates\Main\index.html" />
+    <Content Include="Main\templates\Main\layout.html" />
+    <Content Include="Main\templates\Main\replaystats.html" />
+    <Content Include="Main\templates\Main\replaystatsCalc.html" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Main\" />
     <Folder Include="Main\migrations\" />
+    <Folder Include="Main\static\" />
+    <Folder Include="Main\static\app\" />
+    <Folder Include="Main\static\app\content\" />
+    <Folder Include="Main\static\app\fonts\" />
+    <Folder Include="Main\static\app\scripts\" />
     <Folder Include="Main\templates\" />
     <Folder Include="Main\templates\Main\" />
     <Folder Include="RLDashboard\" />

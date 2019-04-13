@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <!-- Define a viewport for Bootstrap's responsive rendering -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - RLDashboard</title>
+
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
+    <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
+</head>
+<body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+              
+                <a href="/" class="navbar-brand">RLDashboard</a>
+            </div>
+           
+        </div>
+    </div>
+    <div class="container body-content">
+
+<!-- "content" block that pages are expected to override -->
+{% block content %}{% endblock %}
+        <hr/>
+        <footer>
+            <p>&copy; {{ year }} - RLDashboard</p>
+        </footer>
+    </div>
+
+<!-- Additional scripts; use the "scripts" block to add page-specific scripts.  -->
+    <script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>
+    <script src="{% static 'app/scripts/bootstrap.js' %}"></script>
+    <script src="{% static 'app/scripts/respond.js' %}"></script>
+{% block scripts %}{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+﻿  <div class="ReplayDiv {{ResultColor}}">
+     <table><tr><td rowspan="{{ YourSize|add:1 }}" class="ScoreTD">{{YourScore}}</td>
+         <td width="125px" style="font-weight:bold">You</td>
+         <td align="right">G</td>
+         <td align="right">A</td>
+         <td align="right">Sa</td>
+         <td align="right">Sh</td>
+         <td align="right">Speed</td>
+         <td align="right" title="% Super Sonic" width="75px">%SS</td>
+         <td align="right" title="% Boost Speed" width="75px">%BS</td>
+         <td align="right" title="% Slow Speed" width="75px">%SL</td>
+         <td align="right">B Col.</td>
+         <td align="right">Big</td>
+         <td align="right">Small</td>
+         <td align="right">0 Boost</td>
+         <td align="right">PS Num</td>
+         <td align="right">PS Avg</td>
+         <td align="right">Dist</td>
+         <td align="right">Dist P</td>
+         <td align="right">Dist N</td>
+         <td align="right">Behind</td>
+         <td align="right">Front</td>
+         </tr>
+    {% for p in content %}
+    {% if forloop.counter0 == YourSize %}
+        <tr class="ThemTR"><td rowspan="12" class="ScoreTD">{{TheirScore}}</td><td height="10px" style="font-weight:bold" colspan="10">Them</td></tr>
+    {% endif %}
+    <tr>
+        <td width="125px">
+            {{p.name|slice:":15"}}
+        </td>
+        <td width="20px" align="right">
+           {{p.goals}} 
+        </td>
+         <td width="20px" align="right">
+           {{p.assists}} 
+        </td>
+         <td width="20px" align="right">
+           {{p.saves}} 
+        </td>
+         <td width="20px" align="right">
+           {{p.shots}} 
+        </td>
+        <td width="75px" align="right">
+           {{p.avg_speed}} 
+        </td>
+        <td width="30px" align="right">
+            {{p.percent_supersonic_speed|floatformat:-2}}
+        </td>
+        <td width="30px" align="right">
+            {{p.percent_boost_speed|floatformat:-2}}
+        </td>
+        <td width="30px" align="right">
+            {{p.percent_slow_speed|floatformat:-2}}
+        </td>
+         <td width="75px" align="right">
+           {{p.amount_collected}} 
+        </td>
+        <td width="75px" align="right">
+           {{p.count_collected_big}} 
+        </td>
+        <td width="75px" align="right">
+           {{p.count_collected_small}} 
+        </td>
+         <td width="75px" align="right">
+           {{p.time_zero_boost|floatformat:-2}} 
+        </td>
+        <td width="75px" align="right">
+           {{p.count_powerslide|floatformat:-2}} 
+        </td>
+        <td width="75px" align="right">
+           {{p.avg_powerslide_duration|floatformat:-2}} 
+        </td>
+        <td width="75px" align="right">
+           {{p.avg_distance_to_ball|floatformat:-2}} 
+        </td>
+        <td width="75px" align="right">
+           {{p.avg_distance_to_ball_possession|floatformat:-2}} 
+        </td>
+        <td width="75px" align="right">
+           {{p.avg_distance_to_ball_no_possession|floatformat:-2}} 
+        </td>
+        <td width="75px" align="right">
+           {{p.time_behind_ball|floatformat:0}} 
+        </td>
+          <td width="75px" align="right">
+           {{p.time_infront_ball|floatformat:0}} 
+        </td>
+        </tr>
+        {% endfor %}
+    </table>
+        </div>
