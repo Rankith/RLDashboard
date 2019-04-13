@@ -9,17 +9,15 @@
          <td align="right" title="% Super Sonic" width="75px">%SS</td>
          <td align="right" title="% Boost Speed" width="75px">%BS</td>
          <td align="right" title="% Slow Speed" width="75px">%SL</td>
-         <td align="right">B Col.</td>
+         <td align="right">Boost Col.</td>
          <td align="right">Big</td>
          <td align="right">Small</td>
          <td align="right">0 Boost</td>
-         <td align="right">PS Num</td>
-         <td align="right">PS Avg</td>
-         <td align="right">Dist</td>
-         <td align="right">Dist P</td>
-         <td align="right">Dist N</td>
-         <td align="right">Behind</td>
-         <td align="right">Front</td>
+         <td align="right" title="Times Power Slide Used">PS Num</td>
+         <td align="right" title="Power Slide Average Duration">PS Avg</td>
+         <td align="right" title="AVG Distance From Ball">Dist</td>
+         <td align="right" title="Time Behind Ball">Behind B</td>
+         <td align="right" title="Time In Front of Ball">Front B</td>
          </tr>
     {% for p in content %}
     {% if forloop.counter0 == YourSize %}
@@ -73,12 +71,6 @@
         </td>
         <td width="75px" align="right">
            {{p.avg_distance_to_ball|floatformat:-2}} 
-        </td>
-        <td width="75px" align="right">
-           {{p.avg_distance_to_ball_possession|floatformat:-2}} 
-        </td>
-        <td width="75px" align="right">
-           {{p.avg_distance_to_ball_no_possession|floatformat:-2}} 
         </td>
         <td width="75px" align="right">
            {{p.time_behind_ball|floatformat:0}} 
