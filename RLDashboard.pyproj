@@ -54,6 +54,7 @@
     <Content Include="Main\static\app\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Main\static\app\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Main\static\app\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Procfile.txt" />
     <Content Include="runtime.txt" />
     <None Include="Main\static\app\scripts\_references.js" />
     <Content Include="Main\static\app\scripts\bootstrap.js" />
