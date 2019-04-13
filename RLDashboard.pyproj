@@ -56,6 +56,7 @@
     <Content Include="Main\static\app\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Procfile" />
     <Content Include="runtime.txt" />
+    <Content Include="staticfiles\holder.txt" />
     <None Include="Main\static\app\scripts\_references.js" />
     <Content Include="Main\static\app\scripts\bootstrap.js" />
     <Content Include="Main\static\app\scripts\bootstrap.min.js" />
@@ -80,6 +81,7 @@
   <ItemGroup>
     <Folder Include="Main\" />
     <Folder Include="Main\migrations\" />
+    <Folder Include="staticfiles\" />
     <Folder Include="Main\static\" />
     <Folder Include="Main\static\app\" />
     <Folder Include="Main\static\app\content\" />
