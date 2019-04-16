@@ -102,29 +102,32 @@ def getreplayCalc(request):
         return HttpResponse(html)
 
 def getreplay(request):
-    raw_html = (simple_get('https://ballchasing.com' + request.GET['replay'] + '/stats#movement'))
-    html = BeautifulSoup(raw_html, 'html.parser')
-    raw_html = raw_html.decode("utf-8") 
-    start = raw_html.find("window.bcStats.Create")
-    raw_html = raw_html[start + 22:]
-    end = raw_html.find("}]});")
-    raw_html = raw_html[:end + 3]
-    data = json.loads(raw_html)
-    playerColor = "orange"
-    enemyColor = "blue"
-    for val in data["blue"]["players"]:
-        if val["name"].lower() == request.GET['playerName'].lower():
-            playerColor = "blue"
-            enemyColor="orange"
-            break
-    stats =  data[playerColor]["players"] + data[enemyColor]["players"]
-    yourSize = len(data[playerColor]["players"])
-    theirSize = len(data[playerColor]["players"])
-    yourScore = data[playerColor]["goals"]
-    theirScore = data[enemyColor]["goals"]
-    if yourScore > theirScore:
-        resultColor = "DivResultWin"
-    else:
-        resultColor = "DivResultLose"
-    html = render_to_string("Main/replaystats.html",{'content': stats,'YourScore':yourScore,'TheirScore':theirScore,'YourSize':yourSize,'TheirSize':theirSize,'ResultColor':resultColor})
-    return HttpResponse(html)
+    try:
+        raw_html = (simple_get('https://ballchasing.com' + request.GET['replay'] + '/stats#movement'))
+        html = BeautifulSoup(raw_html, 'html.parser')
+        raw_html = raw_html.decode("utf-8") 
+        start = raw_html.find("window.bcStats.Create")
+        raw_html = raw_html[start + 22:]
+        end = raw_html.find("}]});")
+        raw_html = raw_html[:end + 3]
+        data = json.loads(raw_html)
+        playerColor = "orange"
+        enemyColor = "blue"
+        for val in data["blue"]["players"]:
+            if val["name"].lower() == request.GET['playerName'].lower():
+                playerColor = "blue"
+                enemyColor="orange"
+                break
+        stats =  data[playerColor]["players"] + data[enemyColor]["players"]
+        yourSize = len(data[playerColor]["players"])
+        theirSize = len(data[playerColor]["players"])
+        yourScore = data[playerColor]["goals"]
+        theirScore = data[enemyColor]["goals"]
+        if yourScore > theirScore:
+            resultColor = "DivResultWin"
+        else:
+            resultColor = "DivResultLose"
+        html = render_to_string("Main/replaystats.html",{'content': stats,'YourScore':yourScore,'TheirScore':theirScore,'YourSize':yourSize,'TheirSize':theirSize,'ResultColor':resultColor})
+        return HttpResponse(html)
+    except:
+        html = ""
