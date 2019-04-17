@@ -20,12 +20,18 @@ Enter player name and hit start.  Games will load in as they are uploaded and ba
     var playerName = "{{playerName}}";
     var interval = "";
     $( document ).ready(function() {
-        if (playerName != "-1")
+      StartLooking();
+    });
+
+    function StartLooking()
+    {
+    console.log(playerName);
+     if (playerName != "-1")
         {
             CheckReplay();
-            interval = setInterval(CheckReplay,5000);
+            interval = setInterval(CheckReplay,10000);
         }
-    });
+    }
 
     function CheckReplay()
     {
