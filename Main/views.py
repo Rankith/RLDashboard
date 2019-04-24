@@ -142,20 +142,8 @@ def EnterToSheet(data,yourScore,theirScore,yourSize,playerColor,replayID):
     if dothis:
         scope = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
-        #creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
-        ServiceAccountCredentials.from_json({
-  "type": "service_account",
-  "project_id": "rldashboard",
-  "private_key_id": "961ab931b49d636a2d9c217aa6f0798a1b9912f6",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDBC58mxKaNiq79\nPLCjpV65WjXPV9YwrcIHP5+l0NsZIvej1h4NbC9n9w6eWQKODKeXRx6DtTxyLx5F\nTDgEg/KAc+v5jYmqN9HykemLH6gf0USaDMKB0S7d8OjrwbPtxoFRzQiP4ZxHSj7F\nMNfhB908UGezVvRwH8ZalxQmoEQ3Ci8tgf29ZbrmjTQGGln4Buob/CpbWikRbAjJ\nIwohjJdqGz0fv9kfVAuMFVFHQcw4IvJvfZDLUiItqFb7+2+Lb3MUZ7rM2aQL8+Gw\nXwARMvKblBZq6TkYqdKp2lco7n3rKJ711oYuir/6XvJf2LXd7cgQiuB8judRTWJI\ngQpJ+NJZAgMBAAECggEAFIfh40Oi2wbW2YPs3VqnGltnwad71i2EpzSzC/WMd73q\nTHhnNdI9sHbsDRc2WFksMcCUlDlgNlyggYo7ou9NiS/K9v2AmKPbJksyZWN2g/vD\nqgaVYS0YKO6INxqgwjcMZeDCelrqPgK9bkdljj9B3jpG7SHgWVRnyharQ/hjiN7S\nu3FSVK9xORKorUVkn+zRRCjpA28ldak/cW5E46G7qMxyHIFiD0gxkM8Z1rcPdknd\nO31um8cFxSY4TTzew72mfOUsTc6+mZZB8LXvmpLIA8H8CQTXALepIEt/Sb4qDS5g\nMNT8wozI9Uxm0tVydox8C3ZJx7aCjA/HktWwqvSZyQKBgQD88CUPhnZWKflTb5ey\n39cVtDscEx6hXjK2Z4K+MuVbsep/48tJRz7JOT7IJCLUDhH0Qf7+vhReCteVRa/T\ntN2+uA4N6PMV1+XD4ytmKSYm5sLf2WUA3SOGqxPwWQBUmNqeCG4tLscEVmlqVCm3\nprblcwoEJl3yGF+Yc6BKBF2YzwKBgQDDYd6Xdfhb1E8OgGWkCMf9gXU0UhHrkqf7\nYe45NESt2mr1LIw7Mkeesk77hH4p/hcItLShuiyX+0ur6kKllelB95QtVOnYmpIQ\nUsCOD6EonEhLr/gilCnkkYVCjVMGvzoL1AV9FXOJBmp4uJfOZRc0AiDOTmTiB2gJ\nDllQOajcVwKBgQC+dQUy/4izsL9wuCJ+KlaGnUO1DCCQWaHN/3tPRHu34+wziI9W\nCjOYyWYgxjUDf+S9C8S6hN5JQdi7KdIPk601ItpSVwpTdFIqgi/3qRx1RmWOsN+B\nGwLZMJC+9gVtrftP7AEqPILXHUobKmyPQRWPCGSOY2VyGjBBVy9nDIp9uQKBgDgu\ng1AwNvtI4Ha+CvwRHljSCf7Cfq6rnCwX6+V9FyaawNjBN42qFpgWk8mVPqYaj0sM\nk0hR/ZKySv8jPIjaw5kZdP1YBmongEq7UO1Ip0HDNrK05fgjfKxh/9y0QKSXBjzy\neaWPLoq/UoxmIBjUTsjAt+g6+J1aHdtEyf/cpKa/AoGAFogDm3MPp2eA6EyD1m67\n7TPUwv5XMtlP97wx1ZdwButiGPjaSe3uayNxq8J5R4Kn+/sAQ2iBE1muH8GF1Twr\nA0EmqT9Ohp0OJ8t0r2qKBMezVW+3/VIq4o4UONuLT05WKaOMFVyU4FFXp458SkNG\nZ9WnvmQQul9em3qBY//4X5o=\n-----END PRIVATE KEY-----\n",
-  "client_email": "main-843@rldashboard.iam.gserviceaccount.com",
-  "client_id": "104102762953073532514",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/main-843%40rldashboard.iam.gserviceaccount.com"
-}
-)
+        creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
+
         client = gspread.authorize(creds)
 
         StatsSheet = client.open("RLStats").worksheet("StatsDump")
