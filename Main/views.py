@@ -146,6 +146,7 @@ def EnterToSheet(data,yourScore,theirScore,yourSize,playerColor,replayID):
          'https://www.googleapis.com/auth/drive']
 
         if settings.DEBUG == False:
+            print("key " + os.environ['GKey'])
             creds = ServiceAccountCredentials.from_json_keyfile_dict({
               "type": "service_account",
               "project_id": "rldashboard",
