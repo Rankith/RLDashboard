@@ -197,7 +197,7 @@ def EnterToSheet(data,yourScore,theirScore,yourSize,playerColor,replayID):
                 elif data[i]["name"].lower() == "tranxrl":
                    Tranx = "Tranx"
                    numP += 1
-            if numP >= 2:
+            if numP >= 1:
                 GamesSheet.insert_row([WL,yourScore,theirScore,'',size,'',Chris,Sylv,Sam,Tranx,'',replayID],10)
                 GamesSheet.update_cell(10,6,formattedDT)
 
