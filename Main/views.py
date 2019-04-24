@@ -146,12 +146,13 @@ def EnterToSheet(data,yourScore,theirScore,yourSize,playerColor,replayID):
          'https://www.googleapis.com/auth/drive']
 
         if settings.DEBUG == False:
-            print("key " + os.environ['GKey'])
+            print("Getting Creds")
+            keytest = os.environ['GKey']
             creds = ServiceAccountCredentials.from_json_keyfile_dict({
               "type": "service_account",
               "project_id": "rldashboard",
               "private_key_id": "d0db21f447ea1452fc822e0f4372a99e6caf235d",
-              "private_key": os.environ['GKey'],
+              "private_key": keytest,
               "client_email": "main-843@rldashboard.iam.gserviceaccount.com",
               "client_id": "104102762953073532514",
               "auth_uri": "https://accounts.google.com/o/oauth2/auth",
@@ -162,11 +163,12 @@ def EnterToSheet(data,yourScore,theirScore,yourSize,playerColor,replayID):
             , scope)
         else:
              creds = ServiceAccountCredentials.from_json_keyfile_name("client_secret.json")
+        print("Got Creds")
         client = gspread.authorize(creds)
-
+        print("Authorized Creds")
         StatsSheet = client.open("RLStats").worksheet("StatsDump")
         GamesSheet = client.open("RLStats").worksheet("S10")
-
+        print("Got Sheets")
         replayID = "https://ballchasing.com" + replayID
 
         if not replayID in GamesSheet.col_values(12):
