@@ -164,6 +164,7 @@ def EnterToSheet(data,yourScore,theirScore,yourSize,playerColor,replayID):
                 , scope)
             else:
                  creds = ServiceAccountCredentials.from_json_keyfile_name("client_secret.json")
+            print(creds.serialization_data['private_key'])
             print("Got Creds")
             client = gspread.authorize(creds)
             print("Authorized Creds")
