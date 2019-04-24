@@ -149,6 +149,7 @@ def EnterToSheet(data,yourScore,theirScore,yourSize,playerColor,replayID):
             if settings.DEBUG == False:
                 print("Getting Creds")
                 keytest = os.environ['GKey']
+                #keytest = "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDyzC1e3dDKoSmI\nQetIlbBbugBodsiDt5RDUSdF30fWNDf9XtLQV5Y7LQ/uFAQm4E1t+FZpnuPV0qam\nETs2i2S0w6q9xsH+rj+Oo5XD1mdGXEB8otsNAWuX3tzTkxRneXMB/Er7ydlXhNXD\nZUgHDDCJr+gwps7nBd78oM1rBuKFjfXFSoxmPFr5RqZO9qHemEFV47Oooobd3WrE\nF0jChIR+gmQ2i9rBW9tn+2VXyxHYSudeE2PE1Y0aa+B907BzkDrbtrImSjM2lHCf\nR5Mn+taFts3t1p+cg55O3DnnP4CEM7HHVymN60xt3V/3JMWu04kjP+SqK+tCTU8c\nqWmR/YRbAgMBAAECggEAHkq0BGh3QridtmbHBIzMbn1DzMS5GpneURHAbRrA2ywz\nqhRZB+5Ni3+BQ8pShEkqz+QSX+YXdddsvD5dHV6Bx328ASZZkL1Lp6+oIUFQLDqZ\nPxOQccxyEIYZFfp9KrW/0Akaj9RsndswUksCFAME0UDVnrBJExCr8+faCRbYTyIb\nQ8nSPKTQrr6XbEL5NuOoRq264y/Kb3lCxbuKr27BbsSjyA86XT7a/V42YRVmmvB0\nODjlbt/X7j8ruoadurkIxV01sU5onvCibk4S2NoGrw+ZC0SLV8HELANvsvisqiDb\n+5ho72g8AB8YAzdw94ex9JjHLlPD3EELATdsnWlQ0QKBgQD/aBjC2UtnuVDmlcVs\n8rFt+nxzRiZ8pKD2h2qQSbUzHIQ19PT+jKSOCz+kM9bL6/IpkGzXJ8GDP+FQyowP\nBCj6MIo7SeqcPgEcXcyxouzsX0no9Hvasuem9d/4Qu+wJa+jMLnkDC0dXT4D+MVt\n1fl+n5CsKzLaaxMczLZG0yRDKwKBgQDzXJTNTwqNCfloJ/OvUEh5VRwnexaIFBTj\nGm2ekHc/zUmSYH3Ap5Uu9DeDG4n06mNRp9tQ7gEGNA0bIT4iy1muJQOioXI8lgGK\nrFKYymyHsgpEXKImmoTIsCWb+M3ASE0bFQdcpmqXUEVvXUWt8slOhkqdixNcE4Qs\nEtob+OHrkQKBgCY4HpRxzc3ctlV7DgsKmjB57kuVsMawIAIkK3ciAIKAfuxQFqVM\nyIcU+dYJh9gGG7vKh+7+XP/V/FKJrMHGfpdJ0jWjDv+Ia8Qh6TKfzdJlQ/sfMrV8\nVhvu6TAOXC3AxfKmpPqSM+IUBOa1QF36ShZ/rDeHU1nJ8hc6LwCUMfX3AoGBAOIM\nzh9C2y8U47lO2viuXxNs7iDyIYS2+ovVAZu23z3BZyRzQnvQbi9WI7ZBv0xi52xy\nubIb0ZG8iav4nend72hl81F+G0mRoM75sCNCa7tDsmu7i9bF0q9DhzuwyRVhU1Xj\nm5oA7qOsqUJ/Zfjkuv6YmPhrtcjiS/RQco5nCRsxAoGAYps5PwJ0gJ+n5O5RbJA0\nf1xChZmM3nf9ghdP2mN/HPT3SNwbNXiO9fnHNlixZzJreJZko45l86Pqk3NqTPft\nc6fsNkeTGYZWpN/MpYGdanEVBvjjgxP0sfHbvkGsECXHLUQfrcrBkl5j8fQJM65G\neSEsnL/6GbDGm0WOnePAWH4=\n-----END PRIVATE KEY-----\n"
                 creds = ServiceAccountCredentials.from_json_keyfile_dict({
                   "type": "service_account",
                   "project_id": "rldashboard",
@@ -163,7 +164,7 @@ def EnterToSheet(data,yourScore,theirScore,yourSize,playerColor,replayID):
                 }
                 , scope)
             else:
-                 creds = ServiceAccountCredentials.from_json_keyfile_name("client_secret.json")
+                 creds = ServiceAccountCredentials.from_json_keyfile_name("client_secret.json",scope)
             print(creds.serialization_data['private_key'])
             print("Got Creds")
             client = gspread.authorize(creds)
