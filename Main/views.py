@@ -183,37 +183,41 @@ def EnterToSheet(data,yourScore,theirScore,yourSize,playerColor,replayID):
                 formattedDT = formattedDT[1:]
 
             Sylv,Sam,Chris,Tranx = "","","",""
-
+            numP = 0
             for i in range(len(data)):
                 if data[i]["name"].lower() == "sylv":
                    Sylv = "Julian"
+                   numP += 1
                 elif data[i]["name"].lower() == "bishopxi":
                    Chris = "Chris"
+                   numP += 1
                 elif data[i]["name"].lower() == "workaholic":
                    Sam = "Sam"
+                   numP += 1
                 elif data[i]["name"].lower() == "tranxrl":
                    Tranx = "Tranx"
+                   numP += 1
+            if numP >= 2:
+                GamesSheet.insert_row([WL,yourScore,theirScore,'',size,'',Chris,Sylv,Sam,Tranx,'',replayID],10)
+                GamesSheet.update_cell(10,6,formattedDT)
 
-            GamesSheet.insert_row([WL,yourScore,theirScore,'',size,'',Chris,Sylv,Sam,Tranx,'',replayID],10)
-            GamesSheet.update_cell(10,6,formattedDT)
-
-            #now do stat sheet
-            for i in range(len(data) - 1,-1,-1):
-                if i == yourSize - 1:
-                    #opponent header
-                    StatsSheet.insert_row([theirScore,'Them'],1)
+                #now do stat sheet
+                for i in range(len(data) - 1,-1,-1):
+                    if i == yourSize - 1:
+                        #opponent header
+                        StatsSheet.insert_row([theirScore,'Them'],1)
+                    statLine = ['']
+                    for j,k in data[i].items():
+                        statLine.append(k)
+                    StatsSheet.insert_row(statLine,1)
+                    #StatsSheet.insert_row(['',data[i]["name"],data[i]["goals"],data[i]["assists"],data[i]["saves"],data[i]["shots"],data[i]["avg_speed"],data[i]["percent_supersonic_speed"],data[i]["percent_boost_speed"],data[i]["percent_slow_speed"],data[i]["amount_collected"],data[i]["count_collected_big"],data[i]["count_collected_small"],data[i]["time_zero_boost"],data[i]["count_powerslide"],data[i]["avg_powerslide_duration"],data[i]["avg_distance_to_ball"],data[i]["time_behind_ball"],data[i]["time_infront_ball"]],1)
+                StatsSheet.insert_row([yourScore,'Us'],1)
                 statLine = ['']
-                for j,k in data[i].items():
-                    statLine.append(k)
+                for j,k in data[0].items():
+                    statLine.append(j)
                 StatsSheet.insert_row(statLine,1)
-                #StatsSheet.insert_row(['',data[i]["name"],data[i]["goals"],data[i]["assists"],data[i]["saves"],data[i]["shots"],data[i]["avg_speed"],data[i]["percent_supersonic_speed"],data[i]["percent_boost_speed"],data[i]["percent_slow_speed"],data[i]["amount_collected"],data[i]["count_collected_big"],data[i]["count_collected_small"],data[i]["time_zero_boost"],data[i]["count_powerslide"],data[i]["avg_powerslide_duration"],data[i]["avg_distance_to_ball"],data[i]["time_behind_ball"],data[i]["time_infront_ball"]],1)
-            StatsSheet.insert_row([yourScore,'Us'],1)
-            statLine = ['']
-            for j,k in data[0].items():
-                statLine.append(j)
-            StatsSheet.insert_row(statLine,1)
-            #StatsSheet.insert_row([yourScore,'You','G','A','Sa','Sh','Speed','%SS','%BS','%SL','Boost Col.','Big','Small','0 Boost','PS Num','PS Avg','Dist','Behind B','Front B'],1)
-            StatsSheet.insert_row([replayID],1)
-            StatsSheet.insert_row([''],1)
-           # GamesSheet.update_cell(9,2,yourScore)
-           # GamesSheet.update_cell(9,3,theirScore)
+                #StatsSheet.insert_row([yourScore,'You','G','A','Sa','Sh','Speed','%SS','%BS','%SL','Boost Col.','Big','Small','0 Boost','PS Num','PS Avg','Dist','Behind B','Front B'],1)
+                StatsSheet.insert_row([replayID],1)
+                StatsSheet.insert_row([''],1)
+               # GamesSheet.update_cell(9,2,yourScore)
+               # GamesSheet.update_cell(9,3,theirScore)
