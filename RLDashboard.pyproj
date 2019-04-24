@@ -47,6 +47,7 @@
     <Compile Include="RLDashboard\wsgi.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Main\client_secret.json" />
     <Content Include="Main\static\app\content\bootstrap.css" />
     <Content Include="Main\static\app\content\bootstrap.min.css" />
     <Content Include="Main\static\app\content\site.css" />

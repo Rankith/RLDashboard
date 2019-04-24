@@ -12,3 +12,5 @@ setuptools==28.8.0
 soupsieve==1.7.3
 urllib3==1.24.1
 whitenoise
+oauth2client
+gspread
